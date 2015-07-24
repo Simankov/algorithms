@@ -9,14 +9,9 @@ public class BinarySearch extends Searching{
         super(A);
     }
 
-    void search(int element) {
-        int result = BinarySearch(element,0,A.length-1);
-        switch (result){
-            case -1:
-                break;
-            default:
-                this.setSearched(result);
-        }
+    int search(int element) {
+        return  BinarySearch(element,0,A.length-1);
+
     }
 
     int BinarySearch(int element, int begin, int end){

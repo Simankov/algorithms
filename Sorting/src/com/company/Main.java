@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
-    static int n = 15;
+    static int n = 300;
     static int [] A = new int[n];
     public static void main(String[] args) {
 
@@ -38,20 +38,25 @@ public class Main {
     static void testBinarySearch(){
         sortArray();
 
-        for (int i = 0; i<150; ++i) {
-            int index = (int) (Math.random() * n);
 
-            BinarySearch binarySearch = new BinarySearch(A);
-            binarySearch.search(A[index]);
-            binarySearch.print();
-        }
-
-        for (int i = 0; i<150; ++i) {
+        for (int i = 0; i<1500; ++i) {
             int element = (int) (Math.random() * 100);
-            System.out.println(java.util.Arrays.binarySearch(A,element));
             BinarySearch binarySearch = new BinarySearch(A);
-            binarySearch.search(element);
-            binarySearch.print();
+            int systemResult = java.util.Arrays.binarySearch(A,element);
+            int myResult = binarySearch.search(element);
+            if (systemResult == myResult && myResult>0)
+            {
+                System.out.println("success: find "+ myResult);
+            }
+            else if (systemResult<0 && myResult<0){
+                System.out.println("success: null ");
+            }
+            else {
+                System.out.println("fail");
+            }
+
+
+
 
         }
     }
