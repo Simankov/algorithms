@@ -1,7 +1,7 @@
 package com.company;
 
 class MergeSort extends Sorting {
-    MergeSort(double[] A) {
+    MergeSort(int[] A) {
         super(A);
     }
 
@@ -27,8 +27,8 @@ class MergeSort extends Sorting {
         int i = 0;
         int j = 0;
 
-        double[] L = new double[n1];
-        double[] R = new double[n2];
+        int[] L = new int[n1];
+        int[] R = new int[n2];
 
         for (int l = 0; l < n1; l++) {
             L[l] = A[p + l];

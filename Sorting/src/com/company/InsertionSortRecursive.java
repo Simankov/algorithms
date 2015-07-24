@@ -2,7 +2,7 @@ package com.company;
 
 public class InsertionSortRecursive extends Sorting {
 
-    InsertionSortRecursive(double[] A) {
+    InsertionSortRecursive(int[] A) {
         super(A);
     }
 
@@ -18,7 +18,7 @@ public class InsertionSortRecursive extends Sorting {
         {
             int q = p-1;
             InsertionRecursive(q);
-            double key = A[p];
+            int key = A[p];
             int i = q;
             while ((i >= 0 ) && (A[i] < key)) {
                 A[i + 1] = A[i];

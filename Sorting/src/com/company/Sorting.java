@@ -1,12 +1,10 @@
 package com.company;
 
     abstract class Sorting {
-        double [] A;
-        static Sorting implementation = null;
-        Sorting(double [] a) {
-            if (implementation == null) {
-                implementation = this;
-            }
+        int [] A;
+
+        Sorting(int [] a) {
+
             A  = a.clone();
         }
 

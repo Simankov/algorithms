@@ -4,7 +4,7 @@ package com.company;
  * Created by sergey on 24.07.15.
  */
 public class SelectionSort extends Sorting {
-    SelectionSort(double[] A) {
+    SelectionSort(int[] A) {
         super(A);
     }
 
@@ -23,7 +23,7 @@ public class SelectionSort extends Sorting {
                     keyIndex = i;
                 }
             }
-            double dummy = A[keyIndex];
+            int dummy = A[keyIndex];
             A[keyIndex] = A[j];
             A[j] = dummy;
 
