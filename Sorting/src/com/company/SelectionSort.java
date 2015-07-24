@@ -3,17 +3,17 @@ package com.company;
 /**
  * Created by sergey on 24.07.15.
  */
-public class InsertionSort extends Sorting {
-    InsertionSort(double[] A) {
+public class SelectionSort extends Sorting {
+    SelectionSort(double[] A) {
         super(A);
     }
 
     @Override
     void sort() {
-        InsertionSort();
+       SelectionSort();
     }
 
-    void InsertionSort() {
+    void SelectionSort() {
         int n = A.length;
         for (int j = 0; j < n - 1; j++) {
 
@@ -28,5 +28,12 @@ public class InsertionSort extends Sorting {
             A[j] = dummy;
 
         }
+    }
+
+    @Override
+    void print() {
+        System.out.println("SelectionSort started");
+        super.print();
+
     }
 }
