@@ -5,24 +5,29 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-    static int n = 300;
+    static int n = 10;
     static int [] A = new int[n];
     public static void main(String[] args) {
 
         fillArray();
         MergeSort mergeSort = new MergeSort(A);
-        SelectionSort selectionSort = new  SelectionSort(A);
+//        SelectionSort selectionSort = new  SelectionSort(A);
         mergeSort.sort();
         mergeSort.print();
-        selectionSort.sort();
-        selectionSort.print();
+        System.out.println(mergeSort.inversions);
+//        selectionSort.sort();
+//        selectionSort.print();
+//
+//        InsertionSortRecursive insertionSortRecursive = new InsertionSortRecursive(A);
+//        insertionSortRecursive.sort();
+//        insertionSortRecursive.print();
 
-        InsertionSortRecursive insertionSortRecursive = new InsertionSortRecursive(A);
-        insertionSortRecursive.sort();
-        insertionSortRecursive.print();
+//        testBinarySearch();
+//        testAdditionSearch();
 
-        testBinarySearch();
-        testAdditionSearch();
+//        BubbleSort bubbleSort = new BubbleSort(A);
+//        bubbleSort.sort();;
+//        bubbleSort.print();
 
     }
     public static int randInt(int min, int max) {

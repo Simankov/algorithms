@@ -8,9 +8,12 @@ class MergeSort extends Sorting {
         super(A,cloneArray);
     }
 
+
+    int inversions = 0;
+
     @Override
     void sort() {
-        MergeSort(0,A.length-1);
+        MergeSort(0, A.length - 1);
     }
 
     void MergeSort(int p, int r){
@@ -22,6 +25,8 @@ class MergeSort extends Sorting {
         Merge(p,q,r);
 
     }
+
+
 
     void Merge(int p, int q, int r) {
         int n1 = q - p + 1;
@@ -47,11 +52,14 @@ class MergeSort extends Sorting {
             if (i > n1 - 1) {
                 A[s] = R[j];
                 j++;
+
             } else if (j > n2 - 1) {
                 A[s] = L[i];
                 i++;
+
             } else if (L[i] > R[j]) {
                 A[s] = R[j];
+                inversions = inversions + n1-i;
                 j++;
             } else {
                 A[s] = L[i];
