@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     static int n = 300;
@@ -21,14 +22,25 @@ public class Main {
         insertionSortRecursive.print();
 
         testBinarySearch();
+        testAdditionSearch();
 
     }
+    public static int randInt(int min, int max) {
 
+
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
 
     static void fillArray()
     {
 
-        for (int i=0; i<n; i++) A[i] = ((int) (Math.random()*100));
+        for (int i=0; i<n; i++) A[i] = randInt(-1000,+1000);
     }
 
     static void sortArray(){
@@ -60,5 +72,28 @@ public class Main {
 
         }
     }
+
+    static void testAdditionSearch(){
+        AdditionSearch additionSearch = new AdditionSearch(A);
+        for (int i = 0;i<1000; i++) {
+            int sum = randInt(-10000, 10000);
+            int myResult = additionSearch.search(sum);    //int represents boolean 1 or 0
+            boolean sysResult = additionSearch.sillyAdditionSearch(sum);
+            if (myResult == 1 && sysResult){
+                System.out.println("Find");
+            }
+            else if (myResult == 0 && !sysResult){
+                System.out.println("There aren't such indexes");
+
+            }
+            else {
+                System.out.println("fail.....");
+            }
+        }
+
+
+
+    }
+
 
 }

@@ -3,7 +3,10 @@ package com.company;
 public class InsertionSortRecursive extends Sorting {
 
     InsertionSortRecursive(int[] A) {
-        super(A);
+        super(A,true);
+    }
+    InsertionSortRecursive(int[] A, boolean cloneArray) {
+        super(A,cloneArray);
     }
 
     @Override

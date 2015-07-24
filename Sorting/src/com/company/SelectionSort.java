@@ -4,10 +4,13 @@ package com.company;
  * Created by sergey on 24.07.15.
  */
 public class SelectionSort extends Sorting {
-    SelectionSort(int[] A) {
-        super(A);
-    }
 
+    SelectionSort(int[] A) {
+        super(A,true);
+    }
+    SelectionSort(int[] A, boolean cloneArray) {
+        super(A,cloneArray);
+    }
     @Override
     void sort() {
        SelectionSort();

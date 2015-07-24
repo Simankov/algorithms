@@ -2,7 +2,10 @@ package com.company;
 
 class MergeSort extends Sorting {
     MergeSort(int[] A) {
-        super(A);
+        super(A,true);
+    }
+    MergeSort(int[] A, boolean cloneArray) {
+        super(A,cloneArray);
     }
 
     @Override
