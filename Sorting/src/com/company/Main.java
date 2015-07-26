@@ -1,20 +1,22 @@
 package com.company;
 
+import org.omg.CORBA.MARSHAL;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-    static int n = 10;
+    static int n = 10000;
     static int [] A = new int[n];
     public static void main(String[] args) {
 
         fillArray();
         MergeSort mergeSort = new MergeSort(A);
-//        SelectionSort selectionSort = new  SelectionSort(A);
-        mergeSort.sort();
-        mergeSort.print();
-        System.out.println(mergeSort.inversions);
+////        SelectionSort selectionSort = new  SelectionSort(A);
+//        mergeSort.sort();
+//       mergeSort.print();
+//        System.out.println(mergeSort.inversions);
 //        selectionSort.sort();
 //        selectionSort.print();
 //
@@ -28,6 +30,18 @@ public class Main {
 //        BubbleSort bubbleSort = new BubbleSort(A);
 //        bubbleSort.sort();;
 //        bubbleSort.print();
+        MaximumSubarray maximumSubarray = new MaximumSubarray(A);
+        maximumSubarray.start();
+        int resultLinear = maximumSubarray.linearMethod()[2];
+        maximumSubarray.stop();
+
+
+        maximumSubarray.start();
+        int resultReqursive = maximumSubarray.reсursiveMethod()[2];
+        maximumSubarray.stop();
+        System.out.println(resultLinear + " " + resultReqursive);
+        System.out.println(maximumSubarray.bruteForceMethod()[2]);
+
 
     }
     public static int randInt(int min, int max) {
@@ -45,7 +59,7 @@ public class Main {
     static void fillArray()
     {
 
-        for (int i=0; i<n; i++) A[i] = randInt(-1000,+1000);
+        for (int i=0; i<n; i++) A[i] = randInt(-1000,1000);
     }
 
     static void sortArray(){
