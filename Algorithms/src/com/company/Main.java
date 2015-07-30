@@ -7,8 +7,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-    static int n = 80;
+    static int n = 2000;
     static int [] A = new int[n];
+    static int [][] a = new int[n][n];
+    static int [][] b = new int[n][n];
     public static void main(String[] args) {
 //
 //        fillArray();
@@ -46,8 +48,31 @@ public class Main {
 //
 //        System.out.println(resultLinear + " " + resultReqursive + " "+resultBruteForce);
 //
-        int result = T(199999);
-        System.out.println(result);
+//        fillArray();
+//
+//
+//        StrassenAlgorithm strassenAlgorithm = new StrassenAlgorithm(a,b);
+//        StrassenAlgorithm strassenAlgorithm1 = new StrassenAlgorithm(a,b);
+//        long time = System.nanoTime();
+//
+//         strassenAlgorithm.StrassenMultiplication();
+//        time = System.nanoTime() - time;
+//        System.out.println(time);
+
+//        time = System.nanoTime();
+//        int [][] d = strassenAlgorithm1.sillyMultiply();
+//        time = System.nanoTime() - time;
+//        System.out.println(time);
+
+
+
+//        long time2 = System.nanoTime();
+//
+//         Strassen.multiply(a,b);
+//        time2 = System.nanoTime() - time2;
+//        System.out.println(time);
+//        System.out.println("done");
+
 
 
 
@@ -67,7 +92,13 @@ public class Main {
     static void fillArray()
     {
 
-        for (int i=0; i<n; i++) A[i] = randInt(-1000,1000);
+        for (int i=0; i<n; i++) {
+            A[i] = randInt(-1000,1000);
+            for (int j=0; j<n; j++) {
+                a[i][j] = randInt(-1000, 1000);
+                b[i][j] = randInt(-1000, 1000);
+            }
+        }
     }
 
     static void sortArray(){
