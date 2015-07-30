@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-    static int n = 10000;
+    static int n = 80;
     static int [] A = new int[n];
     public static void main(String[] args) {
-
-        fillArray();
-        MergeSort mergeSort = new MergeSort(A);
+//
+//        fillArray();
+//        MergeSort mergeSort = new MergeSort(A);
 ////        SelectionSort selectionSort = new  SelectionSort(A);
 //        mergeSort.sort();
 //       mergeSort.print();
@@ -30,17 +30,25 @@ public class Main {
 //        BubbleSort bubbleSort = new BubbleSort(A);
 //        bubbleSort.sort();;
 //        bubbleSort.print();
-        MaximumSubarray maximumSubarray = new MaximumSubarray(A);
-        maximumSubarray.start();
-        int resultLinear = maximumSubarray.linearMethod()[2];
-        maximumSubarray.stop();
+//        MaximumSubarray maximumSubarray = new MaximumSubarray(A);
+//        maximumSubarray.start();
+//        int resultLinear = maximumSubarray.linearMethod()[2];
+//        maximumSubarray.stop();
+//
+//
+//        maximumSubarray.start();
+//        int resultReqursive = maximumSubarray.reсursiveMethod()[2];
+//        maximumSubarray.stop();
+//
+//        maximumSubarray.start();
+//        int resultBruteForce = maximumSubarray.bruteForceMethod()[2];
+//        maximumSubarray.stop();
+//
+//        System.out.println(resultLinear + " " + resultReqursive + " "+resultBruteForce);
+//
+        int result = T(199999);
+        System.out.println(result);
 
-
-        maximumSubarray.start();
-        int resultReqursive = maximumSubarray.reсursiveMethod()[2];
-        maximumSubarray.stop();
-        System.out.println(resultLinear + " " + resultReqursive);
-        System.out.println(maximumSubarray.bruteForceMethod()[2]);
 
 
     }
@@ -112,6 +120,22 @@ public class Main {
 
 
 
+    }
+
+
+    static int T(int n){
+        int [] array = new int[n+1];
+        array[0] = 0;
+        array[35] = 0;
+        for (int i = 36; i<=n; i++){
+            if (i % 2 == 1){
+                array[i]=2*array[i/2+16]+i;
+            }
+            else {
+                array[i]=2*array[i/2+17]+i;
+            }
+        }
+        return array[n];
     }
 
 

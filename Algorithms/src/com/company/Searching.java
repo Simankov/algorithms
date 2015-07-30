@@ -14,10 +14,10 @@ abstract class Searching {
 
     abstract int search(int element);
     void start(){
-        time = System.currentTimeMillis();
+        time = System.nanoTime();
     }
     void stop(){
-        time = System.currentTimeMillis()-time;
+        time = System.nanoTime()-time;
         System.out.println(time);
     }
 

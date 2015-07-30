@@ -19,9 +19,16 @@ public class MaximumSubarray extends Searching {
     }
 
     int[] FindMaxSubarray(int low, int high) {
-        if (low == high) {
-            return new int[]{low, high, A[low]};
+//        if (low == high) {
+//            return new int[]{low, high, A[low]};
+//        }
+        if (high - low < 80){
+            MaximumSubarray maximumSubarray = new MaximumSubarray(
+                                                java.util.Arrays.copyOfRange(A,low,high));
+
+            return maximumSubarray.bruteForceMethod();
         }
+
         int mid = (low + high) / 2;
 
         int[] left = FindMaxSubarray(low, mid);
