@@ -13,11 +13,11 @@ public class Main {
     static int [][] b = new int[n][n];
     public static void main(String[] args) {
 //
-//        fillArray();
-//        MergeSort mergeSort = new MergeSort(A);
-////        SelectionSort selectionSort = new  SelectionSort(A);
-//        mergeSort.sort();
-//       mergeSort.print();
+        fillArray();
+       MergeSort mergeSort = new MergeSort(A);
+//        SelectionSort selectionSort = new  SelectionSort(A);
+        mergeSort.sort();
+       mergeSort.print();
 //        System.out.println(mergeSort.inversions);
 //        selectionSort.sort();
 //        selectionSort.print();

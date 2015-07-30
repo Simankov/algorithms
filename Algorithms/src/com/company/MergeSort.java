@@ -8,6 +8,7 @@ class MergeSort extends Sorting {
         super(A,cloneArray);
     }
 
+    final int LEAF_SIZE = 64;
 
     int inversions = 0;
 
@@ -17,7 +18,11 @@ class MergeSort extends Sorting {
     }
 
     void MergeSort(int p, int r){
-        if (p>=r) return;
+        if (r-p<LEAF_SIZE) {
+
+            InsertionSort.InsertionSort(p,r,A);
+            return;
+        }
 
         int q = (p+r)/2;
         MergeSort(p,q);
