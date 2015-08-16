@@ -10,7 +10,8 @@ public class BinarySearch extends Searching{
     }
 
     int search(int element) {
-        return  BinarySearch(element,0,A.length-1);
+//        return  BinarySearch(element,0,A.length-1);
+        return  recursiveBinarySearch(0,A.length-1,element);
 
     }
 
@@ -28,5 +29,23 @@ public class BinarySearch extends Searching{
             }
         }
         return -1;
+    }
+
+    int recursiveBinarySearch(int left, int right, int element){
+        if (left>right){
+            return -1;
+        }
+
+        int center = (left + right)/2;
+        if (A[center]==element){
+            return center;
+        }
+
+        if (A[center]<element)
+        {
+           return recursiveBinarySearch(center+1,right,element);
+        }
+        return recursiveBinarySearch(left,center-1,element);
+
     }
 }

@@ -14,10 +14,9 @@ public class Main {
     public static void main(String[] args) {
 //
         fillArray();
-       MergeSort mergeSort = new MergeSort(A);
-//        SelectionSort selectionSort = new  SelectionSort(A);
-        mergeSort.sort();
-       mergeSort.print();
+        HeapSort heapSort = new HeapSort(A);
+        heapSort.sort();
+        heapSort.print();
 //        System.out.println(mergeSort.inversions);
 //        selectionSort.sort();
 //        selectionSort.print();
