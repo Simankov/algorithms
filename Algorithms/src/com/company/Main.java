@@ -7,16 +7,21 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-    static int n = 2000;
-    static int [] A = new int[n];
-    static int [][] a = new int[n][n];
-    static int [][] b = new int[n][n];
+    static int n = 14;
+    static int m = 16;
+    static int[] A = new int[n];
+    static int[][] a = new int[n][m];
+    static int[][] b = new int[n][m];
+
     public static void main(String[] args) {
 //
         fillArray();
         HeapSort heapSort = new HeapSort(A);
         heapSort.sort();
         heapSort.print();
+
+        final YoungTable youngTable = new YoungTable(a);
+
 //        System.out.println(mergeSort.inversions);
 //        selectionSort.sort();
 //        selectionSort.print();
@@ -64,7 +69,6 @@ public class Main {
 //        System.out.println(time);
 
 
-
 //        long time2 = System.nanoTime();
 //
 //         Strassen.multiply(a,b);
@@ -72,10 +76,10 @@ public class Main {
 //        System.out.println(time);
 //        System.out.println("done");
 
-
-
-
     }
+
+
+
     public static int randInt(int min, int max) {
 
 
@@ -93,9 +97,9 @@ public class Main {
 
         for (int i=0; i<n; i++) {
             A[i] = randInt(-1000,1000);
-            for (int j=0; j<n; j++) {
-                a[i][j] = randInt(-1000, 1000);
-                b[i][j] = randInt(-1000, 1000);
+            for (int j=0; j<m; j++) {
+                a[i][j] = randInt(-10, 10);
+                b[i][j] = randInt(-10, 10);
             }
         }
     }
