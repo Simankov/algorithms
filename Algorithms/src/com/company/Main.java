@@ -1,80 +1,23 @@
 package com.company;
 
-import org.omg.CORBA.MARSHAL;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-    static int n = 14;
-    static int m = 16;
+    static int n = 3000;
+    static int m = 1689;
     static int[] A = new int[n];
-    static int[][] a = new int[n][m];
-    static int[][] b = new int[n][m];
+    static int[][] a = new int[m][n];
+    static int[][] b = new int[m][n];
 
     public static void main(String[] args) {
-//
+
         fillArray();
-        HeapSort heapSort = new HeapSort(A);
-        heapSort.sort();
-        heapSort.print();
-
-        final YoungTable youngTable = new YoungTable(a);
-
-//        System.out.println(mergeSort.inversions);
-//        selectionSort.sort();
-//        selectionSort.print();
-//
-//        InsertionSortRecursive insertionSortRecursive = new InsertionSortRecursive(A);
-//        insertionSortRecursive.sort();
-//        insertionSortRecursive.print();
-
-//        testBinarySearch();
-//        testAdditionSearch();
-
-//        BubbleSort bubbleSort = new BubbleSort(A);
-//        bubbleSort.sort();;
-//        bubbleSort.print();
-//        MaximumSubarray maximumSubarray = new MaximumSubarray(A);
-//        maximumSubarray.start();
-//        int resultLinear = maximumSubarray.linearMethod()[2];
-//        maximumSubarray.stop();
-//
-//
-//        maximumSubarray.start();
-//        int resultReqursive = maximumSubarray.reсursiveMethod()[2];
-//        maximumSubarray.stop();
-//
-//        maximumSubarray.start();
-//        int resultBruteForce = maximumSubarray.bruteForceMethod()[2];
-//        maximumSubarray.stop();
-//
-//        System.out.println(resultLinear + " " + resultReqursive + " "+resultBruteForce);
-//
-//        fillArray();
-//
-//
-//        StrassenAlgorithm strassenAlgorithm = new StrassenAlgorithm(a,b);
-//        StrassenAlgorithm strassenAlgorithm1 = new StrassenAlgorithm(a,b);
-//        long time = System.nanoTime();
-//
-//         strassenAlgorithm.StrassenMultiplication();
-//        time = System.nanoTime() - time;
-//        System.out.println(time);
-
-//        time = System.nanoTime();
-//        int [][] d = strassenAlgorithm1.sillyMultiply();
-//        time = System.nanoTime() - time;
-//        System.out.println(time);
+        testYoungTableSearch();
 
 
-//        long time2 = System.nanoTime();
-//
-//         Strassen.multiply(a,b);
-//        time2 = System.nanoTime() - time2;
-//        System.out.println(time);
-//        System.out.println("done");
 
     }
 
@@ -95,10 +38,10 @@ public class Main {
     static void fillArray()
     {
 
-        for (int i=0; i<n; i++) {
-            A[i] = randInt(-1000,1000);
-            for (int j=0; j<m; j++) {
-                a[i][j] = randInt(-10, 10);
+        for (int i=0; i<m; i++) {
+//            A[i] = randInt(-1000,1000);
+            for (int j=0; j<n; j++) {
+                a[i][j] = randInt(-100, 100);
                 b[i][j] = randInt(-10, 10);
             }
         }
@@ -108,20 +51,21 @@ public class Main {
         java.util.Arrays.sort(A);
     }
 
-    static void testBinarySearch(){
+    static void testYoungTableSearch(){
         sortArray();
+        YoungTable youngTable  = new YoungTable(a);
 
 
         for (int i = 0; i<1500; ++i) {
             int element = (int) (Math.random() * 100);
-            BinarySearch binarySearch = new BinarySearch(A);
-            int systemResult = java.util.Arrays.binarySearch(A,element);
-            int myResult = binarySearch.search(element);
-            if (systemResult == myResult && myResult>0)
+
+            boolean systemResult = youngTable.searchElement(element);
+            boolean myResult = youngTable.findElement(element);
+            if (systemResult && myResult)
             {
                 System.out.println("success: find "+ myResult);
             }
-            else if (systemResult<0 && myResult<0){
+            else if (!systemResult && !myResult){
                 System.out.println("success: null ");
             }
             else {
