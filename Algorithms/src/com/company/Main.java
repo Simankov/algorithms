@@ -6,20 +6,40 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-    static int n = 3000;
-    static int m = 1689;
-    static int[] A = new int[n];
-    static int[][] a = new int[m][n];
-    static int[][] b = new int[m][n];
+    static int size = 15000000;
+//    static int n = 20;
+//    static int m = 39;
+    static int[] A = new int[size];
+//    static int[][] a = new int[m][n];
+//    static int[][] b = new int[m][n];
 
     public static void main(String[] args) {
 
+
         fillArray();
-        testYoungTableSearch();
+        YoungTable youngTable = new YoungTable(A);
+        int element = -19999;
+
+        long time = System.nanoTime();
+        youngTable.findElement(element);     // my realization
+        time = System.nanoTime()-time;
+        System.out.println(time);
+
+        time = System.nanoTime();
+        youngTable.smartSearch(element);    // clean O(n+m)
+        time = System.nanoTime()-time;
+        System.out.println(time);
+
+        time = System.nanoTime();
+        youngTable.standartSearch(element); // clean O(nlogn)
+        time = System.nanoTime()-time;
+        System.out.println(time);
+
+
+        }
 
 
 
-    }
 
 
 
@@ -38,13 +58,14 @@ public class Main {
     static void fillArray()
     {
 
-        for (int i=0; i<m; i++) {
-//            A[i] = randInt(-1000,1000);
-            for (int j=0; j<n; j++) {
-                a[i][j] = randInt(-100, 100);
-                b[i][j] = randInt(-10, 10);
-            }
+        for (int i=0; i<size; i++) {
+            A[i] = randInt(-1000, 1000);
         }
+//        for (int i=0; i<m; i++)
+//            for (int j=0; j<n; j++) {
+//                a[i][j] = randInt(-10, 10);
+//                b[i][j] = randInt(-10, 10);
+//            }
     }
 
     static void sortArray(){
@@ -52,15 +73,16 @@ public class Main {
     }
 
     static void testYoungTableSearch(){
-        sortArray();
-        YoungTable youngTable  = new YoungTable(a);
+
+        YoungTable youngTable  = new YoungTable(A);
+
 
 
         for (int i = 0; i<1500; ++i) {
             int element = (int) (Math.random() * 100);
 
-            boolean systemResult = youngTable.searchElement(element);
-            boolean myResult = youngTable.findElement(element);
+            boolean systemResult = youngTable.smartSearch(element);
+            boolean myResult = youngTable.standartSearch(element);
             if (systemResult && myResult)
             {
                 System.out.println("success: find "+ myResult);
@@ -76,6 +98,10 @@ public class Main {
 
 
         }
+
+
+        youngTable.sort();
+        youngTable.print();
     }
 
     static void testAdditionSearch(){
@@ -115,6 +141,7 @@ public class Main {
         }
         return array[n];
     }
+
 
 
 }
