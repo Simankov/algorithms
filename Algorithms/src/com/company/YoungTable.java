@@ -282,11 +282,37 @@ public class YoungTable {
     }
 
 
-    boolean searchElement(int element) {
+    boolean standartSearch(int element) {
         for (int i = 0; i < m; i++) {
             if (java.util.Arrays.binarySearch(youngTable[i], element) > 0)
                 return true;
         }
+        return false;
+    }
+
+    boolean smartSearch(int element){
+        int i=m-1;
+        int j=0;
+        while (i>=0 && i<m && j>=0 && j<m){
+            if (youngTable[i][j]==element)
+                return true;
+            if (youngTable[i][j]<element){
+                if (j!=n-1) {
+                    j++;
+                } else {
+                    return false;
+                }
+            } else {
+                if (i!=0) {
+                    i--;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+
+
         return false;
     }
 }
