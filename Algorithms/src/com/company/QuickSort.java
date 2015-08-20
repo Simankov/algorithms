@@ -4,15 +4,21 @@ package com.company;
  * Created by sergey on 19.08.15.
  */
 public class QuickSort extends Sorting{
+
+    final int LEAF_SIZE = 64;
+
     QuickSort(int [] A) {
     super(A,true);
     }
 
     void RandomizedQuickSort(int p,int r){
-        if (p<r){
+        if ( r-p > LEAF_SIZE) {
             int q = RandomizedPartition(p,r);
             RandomizedQuickSort(p,q-1);
             RandomizedQuickSort(q+1,r);
+        } else {
+            InsertionSort.InsertionSort(p,r,A);
+
         }
     }
 
