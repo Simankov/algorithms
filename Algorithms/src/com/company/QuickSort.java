@@ -119,7 +119,21 @@ public class QuickSort extends Sorting{
         }
     }
 
+    void TailRecursiveQuickSort(int p,int r){
+        while (p<r){
+            int q = Partition(p,r);
+            if (r-q  > q-p) {
+                TailRecursiveQuickSort(p,q-1);
+                p = q+1;
+            } else {
+                TailRecursiveQuickSort(q+1,r);
+                r = q-1;
+            }
+        }
+
+    }
+
     void sort(){
-        RandomizedQuickSortWithEquals(0,A.length-1);
+        TailRecursiveQuickSort(0, A.length - 1);
     }
 }
