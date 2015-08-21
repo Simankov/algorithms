@@ -5,7 +5,7 @@ package com.company;
  */
 public class QuickSort extends Sorting{
 
-    final int LEAF_SIZE = 64;
+     int LEAF_SIZE = 29;
 
     QuickSort(int [] A) {
     super(A,true);
@@ -21,11 +21,45 @@ public class QuickSort extends Sorting{
 
         }
     }
+    int[] PartitionWithEquals(int p,int r){
+        int i = p-1;
+        int k = p-1;
+        int x = A[r];
+        for (int j=p; j<r; j++){
+            if (A[j]<x){
+                i++;
+                k++;
+                swap(k,j);
+                swap(i,k);
+
+            } else if (A[j]==x){
+                k++;
+                swap(k,j);
+            }
+        }
+        swap(k+1,r);
+        return new int[] {i+1,k+1};
+    }
+    int [] RandomizedPartitionWithEquals(int p,int r){
+        int k = Main.randInt(p,r);
+        swap(r,k);
+        return PartitionWithEquals(p,r);
+    }
+
+    void RandomizedQuickSortWithEquals(int p,int r){
+        if (p<r){
+            int [] indexes = RandomizedPartitionWithEquals(p,r);
+            int q1 = indexes[0];
+            int q2 = indexes[1];
+            RandomizedQuickSortWithEquals(p,q1-1);
+            RandomizedQuickSortWithEquals(q2,r);
+        }
+    }
 
     int RandomizedPartition(int p, int r){
        int k = Main.randInt(p,r);
-        swap(r,k);
-        return Partition(p,r);
+        swap(p,k);
+        return HoarPartition(p,r);
     }
 
     void QuickSort(int p, int r){
@@ -58,7 +92,34 @@ public class QuickSort extends Sorting{
 
     }
 
+    void setLeaf(int LEAF_SIZE){
+        this.LEAF_SIZE = LEAF_SIZE;
+    }
+
+    int HoarPartition(int p,int r){
+        int i = p-1;
+        int j = r+1;
+        int x = A[p];
+        while (true){
+
+            do {
+                i++;
+            } while (A[i]<x);
+
+            do {
+                j--;
+            } while (A[j]>x);
+
+            if (i<j) {
+                swap(i, j);
+            } else {
+                return j;
+            }
+
+        }
+    }
+
     void sort(){
-        RandomizedQuickSort(0,A.length-1);
+        RandomizedQuickSortWithEquals(0,A.length-1);
     }
 }
