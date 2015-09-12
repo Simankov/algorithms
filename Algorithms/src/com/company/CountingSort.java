@@ -37,8 +37,8 @@ public class CountingSort extends Sorting{
     }
 
     void CountingSortWithVariableLenght(){
-        // Using two arrays of size n and two arrays of size k
-        // Time complexify is O(n+k)
+        // Using two arrays of input array size
+        // Time complexify is O(n) where n is total number of digits over all the integers in the array
 
 
         int start = 0;
